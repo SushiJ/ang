@@ -1,1 +1,16 @@
-<p>recipe-list works!</p>
+<div class="mt-4">
+  <button type="button" class="btn btn-success rounded"> New Recipe</button>
+</div>
+<hr>
+<div>
+  <div class="mt-2">
+    <a href="#" class="card rounded" *ngFor="let recipe of recipes">
+      <img src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive rounded card-image-top">
+      <div class="card-body">
+        <h4 class="card-title">{{ recipe.name }}</h4>
+        <p class="card-text">{{ recipe.description }}</p>
+      </div>
+    </a>
+  </div>
+  <app-recipe-item></app-recipe-item>
+</div>
