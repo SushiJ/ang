@@ -2,7 +2,7 @@
   <button type="button" class="btn btn-success rounded"> New Recipe</button>
 </div>
 <hr>
-<div>
+<div class="mb-4">
   <div class="mt-2">
     <a href="#" class="card rounded" *ngFor="let recipe of recipes">
       <img src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive rounded card-image-top">
@@ -12,5 +12,4 @@
       </div>
     </a>
   </div>
-  <app-recipe-item></app-recipe-item>
 </div>
