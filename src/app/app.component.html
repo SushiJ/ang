@@ -1,7 +1,7 @@
 <div class="mt-2 container">
-  <app-header></app-header>
+  <app-header (componentSelected)="onNavigate($event)"></app-header>
   <div class="d-flex justify-content-between container">
-    <app-shopping></app-shopping>
-    <app-recipe-book></app-recipe-book>
+    <app-recipe-book *ngIf="loadedComponent === 'recipe'"></app-recipe-book>
+    <app-shopping *ngIf="loadedComponent !== 'recipe'"></app-shopping>
   </div>
 </div>
