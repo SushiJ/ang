@@ -1,1 +1,7 @@
-<p>recipe-item works!</p>
+<a href="#" class="card rounded" (click)="onSelected()">
+  <img src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive rounded card-image-top">
+  <div class="card-body">
+    <h4 class="card-title">{{ recipe.name }}</h4>
+    <p class="card-text">{{ recipe.description }}</p>
+  </div>
+</a>
