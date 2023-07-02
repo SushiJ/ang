@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Recipe } from './recipe.model';
 })
 export class RecipeBookComponent implements OnInit {
   // @ts-ignore
-  public selectedRecipe: Recipe;
+  @Input() selectedRecipe: Recipe;
 
   constructor() { }
 
