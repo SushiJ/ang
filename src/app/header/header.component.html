@@ -1,23 +1,20 @@
 <nav class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
-
     <a class="nav-brand text-white" href="#">Logo</a>
-
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="#" (click)="onSelect('recipe')">Recipe</a>
+          <a class="nav-link active text-white" aria-current="page" (click)="onSelect('recipe')" href="#">Recipe</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#" (click)="onSelect('shopping')">Shopping</a>
+          <a class="nav-link text-white" (click)="onSelect('shopping')" href="#">Shopping</a>
         </li>
       </ul>
       <ul class="navbar-nav">
-        <li class="dropdown">
-          <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="dropdown" appDropdown>
+          <button type="button" class="nav-link text-white dropdown-toggle">
             Manage
-          </a>
+          </button>
         </li>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="#">Save Data</a></li>

@@ -12,6 +12,7 @@ export class ShoppingListEditComponent {
   @ViewChild('nameInput', { static: true }) nameInputRef: ElementRef;
   // @ts-ignore
   @ViewChild('amountInput', { static: true }) amountInputRef: ElementRef;
+
   @Output() ingredientAdd = new EventEmitter<{ name: string, amount: number }>();
 
   onAddItem() {
