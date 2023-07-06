@@ -1,11 +1,9 @@
-<div class="row ">
+<div class="row col-span">
   <div class="col-xs-12">
-    <div class="img-fluid">
-      <img [src]="recipe.imagePath" class="rounded" [alt]="recipe.name">
-    </div>
+    <img [src]="recipe.imagePath" class="rounded img-thumbnail" [alt]="recipe.name">
   </div>
 </div>
-<div class="row">
+<div class="row mt-4">
   <div class="col-xs-12">
     <h1>{{ recipe.name }}</h1>
   </div>
@@ -28,7 +26,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <p>
+    <p class="fs-5">
       {{ recipe.description }}
     </p>
   </div>
