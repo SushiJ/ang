@@ -10,6 +10,7 @@ import { ShoppingListComponent } from './shopping/shopping-list.component';
 import { RecipeListComponent } from './recipe-book/recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recipe-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShoppingListService } from './services/shoppingList.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RecipeItemComponent,
     ShoppingListEditComponent,
   ],
-  providers: [],
+  providers: [
+    ShoppingListService
+  ],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
