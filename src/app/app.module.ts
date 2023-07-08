@@ -12,16 +12,18 @@ import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recip
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingListService } from './services/shoppingList.service';
 import { AppRouterModule } from './app-router.module';
+import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
     RecipeBookComponent,
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
+    RecipeStartComponent,
+    ShoppingListComponent,
     ShoppingListEditComponent,
   ],
   providers: [

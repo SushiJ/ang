@@ -1,9 +1,9 @@
 <div class="mt-4">
-  <button type="button" class="btn btn-success rounded"> New Recipe</button>
+  <button type="button" class="btn btn-success rounded" routerLink="new"> New Recipe</button>
 </div>
 <hr>
 <div class="mb-4">
   <div class="mt-2">
-    <app-recipe-item *ngFor="let recipeEl of recipes" [recipe]="recipeEl"></app-recipe-item>
+    <app-recipe-item *ngFor="let recipeEl of recipes; let i = index" [recipe]="recipeEl" [index]="i"></app-recipe-item>
   </div>
 </div>
