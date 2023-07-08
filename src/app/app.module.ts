@@ -11,6 +11,7 @@ import { RecipeListComponent } from './recipe-book/recipe-list/recipe-list.compo
 import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recipe-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingListService } from './services/shoppingList.service';
+import { AppRouterModule } from './app-router.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ShoppingListService } from './services/shoppingList.service';
   imports: [
     BrowserModule,
     NgbModule,
+    AppRouterModule
   ]
 })
 export class AppModule { }

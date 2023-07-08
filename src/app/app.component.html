@@ -1,7 +1,6 @@
 <div class="mt-2 container">
-  <app-header (componentSelected)="onNavigate($event)"></app-header>
+  <app-header></app-header>
   <div class="">
-    <app-recipe-book *ngIf="loadedComponent === 'recipe'"></app-recipe-book>
-    <app-shopping *ngIf="loadedComponent !== 'recipe'"></app-shopping>
+    <router-outlet></router-outlet>
   </div>
 </div>
