@@ -1,4 +1,6 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ShoppingListService } from 'src/app/services/shoppingList.service';
 import { Ingredient } from 'src/app/shared/ingredients.model';
 
@@ -8,29 +10,58 @@ import { Ingredient } from 'src/app/shared/ingredients.model';
   styleUrls: ['./shopping-list-edit.component.css'],
 })
 
-export class ShoppingListEditComponent {
+export class ShoppingListEditComponent implements OnInit, OnDestroy {
   // @ts-ignore
-  @ViewChild('nameInput', { static: true }) nameInputRef: ElementRef<HTMLInputElement>;
-  // @ts-ignore
-  @ViewChild('amountInput', { static: true }) amountInputRef: ElementRef<HTMLInputElement>;
+  @ViewChild('f', { static: true }) formRef: NgForm;
 
-  private name: string;
-  private amount: number | null;
+  private editingSub: Subscription | null;
+  private selectedElem: Ingredient | null;
+  // @ts-ignore
+  private idx: number;
+  isEditing = false;
 
   constructor(private slService: ShoppingListService) {
-    this.name = "";
-    this.amount = null;
+    this.editingSub = null;
+    this.selectedElem = null;
   }
 
-  onAddItem() {
-    this.name = this.nameInputRef.nativeElement.value;
-    this.amount = parseInt(this.amountInputRef.nativeElement.value)
-    const newIng = new Ingredient(this.name, this.amount)
+  ngOnInit(): void {
+    this.editingSub = this.slService.onEdited.subscribe((idx: number) => {
+      this.idx = idx;
+      this.isEditing = true;
+      this.selectedElem = this.slService.getIngredientByIdx(idx);
+      this.formRef.setValue({
+        name: this.selectedElem.name,
+        amount: this.selectedElem.amount
+      })
+    });
+  }
+
+  onSubmit(form: NgForm) {
+    const values = form.value;
+    const newIng = new Ingredient(values.name, values.amount)
     this.slService.onIngAdded(newIng);
+    form.reset()
   }
 
-  onCleared() {
-    this.nameInputRef.nativeElement.value = ""
-    this.amountInputRef.nativeElement.value = ""
+  onEdit(form: NgForm) {
+    const values = form.value;
+    const newIng = new Ingredient(values.name, values.amount)
+    this.slService.editIng(newIng, this.idx);
+    this.isEditing = false;
+    form.reset()
   }
+
+  onDelete(form: NgForm) {
+    this.slService.deleteIng(this.idx);
+    this.onClear(form);
+  }
+  onClear(form: NgForm) {
+    form.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.editingSub!.unsubscribe();
+  }
+
 }
