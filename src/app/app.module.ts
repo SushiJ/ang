@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,13 +21,13 @@ import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.co
   declarations: [
     AppComponent,
     HeaderComponent,
+    ShoppingListComponent,
+    ShoppingListEditComponent,
     RecipeBookComponent,
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
     RecipeStartComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
   ],
   providers: [
     ShoppingListService,
@@ -37,6 +37,7 @@ import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.co
     BrowserModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRouterModule
   ]
 })
