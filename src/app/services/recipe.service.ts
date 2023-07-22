@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 import { Recipe } from "../recipe-book/recipe.model";
 import { Ingredient } from "../shared/ingredients.model";
 import { ShoppingListService } from "./shoppingList.service";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe("Garlic chili oil noodles", "These easy garlic chili oil noodles are not for those with a mild palate! Wok-fried garlic chili oil takes ramen noodles to a new level.", "https://images.immediate.co.uk/production/volatile/sites/30/2020/12/Noodles-with-chilli-oil-eggs-6ec34e9.jpg?quality=90&resize=556,505", [
@@ -28,11 +30,26 @@ export class RecipeService {
   getRecipes() {
     return this.recipes.slice();
   }
-  getRecipe(idx: number) {
+  getRecipeByIdx(idx: number) {
     return this.recipes[idx];
   }
 
   addIngToShoppingList(ings: Ingredient[]) {
     this.slService.addIngs(ings);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice())
+  }
+
+  updateRecipe(idx: number, recipe: Recipe) {
+    this.recipes[idx] = recipe
+    this.recipesChanged.next(this.recipes.slice())
+  }
+
+  onDelete(idx: number) {
+    this.recipes.splice(idx, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
