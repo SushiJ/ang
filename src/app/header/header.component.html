@@ -1,23 +1,51 @@
 <nav class="navbar navbar-expand-lg bg-primary rounded">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <a class="nav-brand text-light fs-4 flex-grow-1" routerLink="/">Recipe Book</a>
+      <a class="nav-brand text-light fs-4 flex-grow-1" routerLink="/"
+        >Recipe Book</a
+      >
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-light fs-6" routerLinkActive="active" routerLink="/recipes">Recipe</a>
+          <a
+            class="nav-link text-light fs-6"
+            routerLinkActive="active"
+            routerLink="/recipes"
+            >Recipe</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light fs-6" routerLinkActive="active" routerLink="/shopping-list">Shopping</a>
+          <a
+            class="nav-link text-light fs-6"
+            routerLinkActive="active"
+            routerLink="/shopping-list"
+            >Shopping</a
+          >
         </li>
       </ul>
       <ul class="navbar-nav">
         <div class="dropdown" ngbDropdown>
-          <button type="button" class="nav-link text-light fs-6" ngbDropdownToggle>
+          <button
+            type="button"
+            class="nav-link text-light fs-6"
+            ngbDropdownToggle
+          >
             Manage
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu>
-            <li><a class="dropdown-item text-primary">Save Data</a></li>
-            <li><a class="dropdown-item text-primary">Fetch Data</a></li>
+          <ul
+            class="dropdown-menu"
+            aria-labelledby="navbarDropdown"
+            ngbDropdownMenu
+          >
+            <li>
+              <button type="button" class="dropdown-item" (click)="onSave()">
+                Save Data
+              </button>
+            </li>
+            <li>
+              <button type="button" class="dropdown-item" (click)="onFetch()">
+                Fetch Data
+              </button>
+            </li>
           </ul>
         </div>
       </ul>

@@ -8,24 +8,22 @@ import { Subscription } from 'rxjs';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css'],
 })
-
 export class RecipeListComponent implements OnInit, OnDestroy {
-  recipes: Recipe[] = [];
+  // @ts-ignore
+  recipes: Recipe[];
   // @ts-ignore
   subs: Subscription;
 
-  constructor(private rlService: RecipeService) {
-  }
+  constructor(private rlService: RecipeService) {}
 
   ngOnInit(): void {
     this.subs = this.rlService.recipesChanged.subscribe((recipes) => {
-      this.recipes = recipes
-    })
-
-    this.recipes = this.rlService.getRecipes()
+      this.recipes = recipes;
+    });
+    this.recipes = this.rlService.getRecipes();
   }
 
   ngOnDestroy(): void {
-    this.subs.unsubscribe()
+    this.subs.unsubscribe();
   }
 }
