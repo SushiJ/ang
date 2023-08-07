@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  recipes: Array<Recipe> = [
+  private recipes: Recipe[] = [
     new Recipe(
       'Garlic chili oil noodles',
       'These easy garlic chili oil noodles are not for those with a mild palate! Wok-fried garlic chili oil takes ramen noodles to a new level.',

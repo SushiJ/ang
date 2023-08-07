@@ -1,5 +1,14 @@
-<a class="card rounded mt-4" style="cursor: pointer;" [routerLink]="[index]" routerLinkActive="shadow-lg">
-  <img src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive rounded card-image-top">
+<a
+  class="card rounded mt-4"
+  style="cursor: pointer"
+  [routerLink]="[index]"
+  routerLinkActive="shadow-lg"
+>
+  <img
+    src="{{ recipe.imagePath }}"
+    alt="{{ recipe.name }}"
+    class="img-responsive rounded card-image-top"
+  />
   <div class="card-body">
     <h4 class="card-title">{{ recipe.name }}</h4>
     <p class="card-text">{{ recipe.description }}</p>

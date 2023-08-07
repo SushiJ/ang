@@ -37,10 +37,10 @@ import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component'
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRouterModule,
   ],
 })

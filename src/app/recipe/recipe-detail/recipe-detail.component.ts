@@ -6,34 +6,38 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
   // @ts-ignore
-  @Input() recipe: Recipe;
+  recipe: Recipe;
   // @ts-ignore
   id: number;
 
-  constructor(private rlService: RecipeService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private rlService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   onAddToList() {
-    this.rlService.addIngToShoppingList(this.recipe.ingredients)
+    this.rlService.addIngToShoppingList(this.recipe.ingredients);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.id = +params["id"];
+      this.id = +params['id'];
       this.recipe = this.rlService.getRecipeByIdx(this.id);
-    })
+    });
   }
 
   onEditRecipe() {
-    this.router.navigate(['edit'], { relativeTo: this.route })
+    this.router.navigate(['edit'], { relativeTo: this.route });
     // this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route })
   }
 
   onDelete() {
     this.rlService.onDelete(this.id);
-    this.router.navigate(['recipes'])
+    this.router.navigate(['recipes']);
   }
 }

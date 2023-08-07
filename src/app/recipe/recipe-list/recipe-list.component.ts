@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { Subscription } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -14,13 +14,15 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   // @ts-ignore
   subs: Subscription;
 
-  constructor(private rlService: RecipeService) {}
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.subs = this.rlService.recipesChanged.subscribe((recipes) => {
-      this.recipes = recipes;
-    });
-    this.recipes = this.rlService.getRecipes();
+    this.subs = this.recipeService.recipesChanged
+      .pipe(tap((x) => console.log(x)))
+      .subscribe((recipes: Recipe[]) => {
+        this.recipes = recipes;
+      });
+    this.recipes = this.recipeService.getRecipes();
   }
 
   ngOnDestroy(): void {
